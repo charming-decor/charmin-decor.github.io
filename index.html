@@ -3,31 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charming Decor</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Charming Decor Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .thumbnail {
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        /* Modal Content (Image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Caption of Modal Image */
+        .caption {
+            margin: 10px;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        /* Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ddd;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Charming Decor</h1>
-        <nav>
-            <ul>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section id="portfolio">
-        <h2>My Portfolio</h2>
-        <div class="gallery">
-            <img src="images/image1.jpg" alt="Project 1">
-        </div>
-    </section>
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: charming.decor.sneha@gmail.com</p>
-    </section>
-    <footer>
-        <p>Charming Decor</p>
-    </footer>
+
+<div class="container">
+    <h1>My Portfolio</h1>
+    
+    <!-- Thumbnail Image -->
+    <img src="images/image1.jpg" alt="Portfolio Image" class="thumbnail" id="myImg">
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal Content (Image) -->
+        <span class="close" id="closeBtn">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption" class="caption"></div>
+    </div>
+</div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal
+    var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementById("closeBtn");
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Close the modal when the user clicks outside the image
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
 </body>
 </html>
