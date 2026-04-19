@@ -5,17 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charming Decor Portfolio</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Basic Reset */
+        body, h1, p, img {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Soft light background */
+            color: #333; /* Dark text for readability */
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #4CAF50; /* Green header */
+            color: white;
+            padding: 20px 0;
             text-align: center;
         }
 
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        /* Container for the main content */
         .container {
             margin: 50px auto;
             padding: 20px;
+            max-width: 900px;
         }
 
         .thumbnail {
@@ -24,28 +47,26 @@
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .thumbnail:hover {
             transform: scale(1.05);
         }
 
-        /* The Modal (background) */
+        /* Modal Styling */
         .modal {
             display: none; /* Hidden by default */
             position: fixed;
-            z-index: 1; /* Sit on top */
+            z-index: 1;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            background-color: rgba(0, 0, 0, 0.8);
             padding-top: 60px;
         }
 
-        /* Modal Content (Image) */
         .modal-content {
             margin: auto;
             display: block;
@@ -53,15 +74,13 @@
             max-width: 700px;
         }
 
-        /* Caption of Modal Image */
         .caption {
             margin: 10px;
-            text-align: center;
-            color: #fff;
+            color: white;
             font-size: 18px;
+            text-align: center;
         }
 
-        /* Close Button */
         .close {
             position: absolute;
             top: 15px;
@@ -69,23 +88,43 @@
             color: #fff;
             font-size: 40px;
             font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #ddd;
-            text-decoration: none;
             cursor: pointer;
         }
+
+        .close:hover {
+            color: #ddd;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #333; /* Dark footer */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
 
-<div class="container">
+<!-- Header -->
+<header>
     <h1>My Portfolio</h1>
-    
-    <!-- Thumbnail Image -->
+</header>
+
+<!-- Main Content -->
+<div class="container">
     <img src="images/image1.jpg" alt="Portfolio Image" class="thumbnail" id="myImg">
 
     <!-- The Modal -->
@@ -96,6 +135,11 @@
         <div id="caption" class="caption"></div>
     </div>
 </div>
+
+<!-- Footer -->
+<footer>
+    <p>Charming Decor | <a href="mailto:charming.decor.sneha@gmail.com">Contact Me</a></p>
+</footer>
 
 <script>
     // Get the modal
