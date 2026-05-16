@@ -150,18 +150,28 @@
 
 <script>
   const gallery = document.getElementById('gallery');
+  const modal = document.getElementById("myModal");
+  const modalImg = document.getElementById("img01");
+  const captionText = document.getElementById("caption");
+  const closeBtn = document.getElementById("closeBtn");
 
   let index = 1;
 
   function loadNextImage() {
     const img = new Image();
-
     img.src = `images/image${index}.jpg`;
     img.alt = `Portfolio Image ${index}`;
     img.className = 'thumbnail';
     img.id = `myImg${index}`;
 
     img.onload = () => {
+      // Add click event to open modal
+      img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+
       gallery.appendChild(img);
       index++;
       loadNextImage(); // Load next image
@@ -173,6 +183,18 @@
   }
 
   loadNextImage();
+
+  // Close modal when 'x' is clicked
+  closeBtn.onclick = function() {
+      modal.style.display = "none";
+  }
+
+  // Close modal when clicking outside the image
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
 </script>
     
 <!-- Footer -->
