@@ -137,14 +137,7 @@
     <p>Click on any image to view it in full size:</p>
 
     <!-- Tiled Image Gallery -->
-    <div class="gallery">
-        <img src="images/image1.jpg" alt="Portfolio Image 1" class="thumbnail" id="myImg1">
-        <img src="images/image2.jpg" alt="Portfolio Image 2" class="thumbnail" id="myImg2">
-        <img src="images/image3.jpg" alt="Portfolio Image 3" class="thumbnail" id="myImg3">
-        <img src="images/image4.jpg" alt="Portfolio Image 4" class="thumbnail" id="myImg4">
-        <img src="images/image5.jpg" alt="Portfolio Image 5" class="thumbnail" id="myImg5">
-        <img src="images/image6.jpg" alt="Portfolio Image 6" class="thumbnail" id="myImg6">
-    </div>
+    <div class="gallery" id="gallery"></div>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -155,6 +148,33 @@
     </div>
 </div>
 
+<script>
+  const gallery = document.getElementById('gallery');
+
+  let index = 1;
+
+  function loadNextImage() {
+    const img = new Image();
+
+    img.src = `images/image${index}.jpg`;
+    img.alt = `Portfolio Image ${index}`;
+    img.className = 'thumbnail';
+    img.id = `myImg${index}`;
+
+    img.onload = () => {
+      gallery.appendChild(img);
+      index++;
+      loadNextImage(); // Load next image
+    };
+
+    img.onerror = () => {
+      console.log('No more images found.');
+    };
+  }
+
+  loadNextImage();
+</script>
+    
 <!-- Footer -->
 <footer>
     <p>Charming Decor | <a href="mailto:charming.decor.sneha@gmail.com">Contact Me</a></p>
